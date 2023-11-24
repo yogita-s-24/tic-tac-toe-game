@@ -38,48 +38,57 @@ function Home() {
     const symbol = player === 1 ? "❌" : "⭕";
 
     if (board[1] === symbol && board[2] === symbol && board[3] === symbol) {
-      return showTost(`${player} is Winner 🥇🏆`, "success", 6000);
+      return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
+      setWinner(player);
     } else if (
       board[4] === symbol &&
       board[5] === symbol &&
       board[6] === symbol
     ) {
-      return showTost(`${player} is Winner 🥇🏆`, "success", 6000);
+      return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
+      setWinner(player);
     } else if (
       board[7] === symbol &&
       board[8] === symbol &&
       board[9] === symbol
     ) {
-      return showTost(`${player} is Winner 🥇🏆`, "success", 6000);    } else if (
+      return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
+      setWinner(player);
+    } else if (
       board[1] === symbol &&
       board[4] === symbol &&
       board[7] === symbol
     ) {
-      return showTost(`${player} is Winner 🥇🏆`, "success", 6000);
+      return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
+      setWinner(player);
     } else if (
       board[2] === symbol &&
       board[5] === symbol &&
       board[8] === symbol
     ) {
-      return showTost(`${player} is Winner 🥇🏆`, "success", 6000);
+      return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
+      setWinner(player);
     } else if (
       board[3] === symbol &&
       board[6] === symbol &&
       board[9] === symbol
     ) {
-      return showTost(`${player} is Winner 🥇🏆`, "success", 6000);
+      return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
+      setWinner(player);
     } else if (
       board[1] === symbol &&
       board[5] === symbol &&
       board[9] === symbol
     ) {
-      return showTost(`${player} is Winner 🥇🏆`, "success", 6000);
+      return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
+      setWinner(player);
     } else if (
       board[3] === symbol &&
       board[5] === symbol &&
       board[7] === symbol
     ) {
-      return showTost(`${player} is Winner 🥇🏆`, "success", 6000);
+      return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
+      setWinner(player);
     }
 
     setPlayer(player === 1 ? 2 : 1);
@@ -121,6 +130,14 @@ function Home() {
           <p className="text-xl font-black bg-violet-100 px-9 py-3 rounded-sm mt-14 text-center ring-2 ring-violet-500 shadow-md">
             Currently Playing : {player === 1 ? "❌" : "⭕"}
           </p>
+        </div>
+
+        <div>
+          {winner ? (
+            <p className="text-xl font-black bg-violet-100 px-9 py-3 rounded-sm mt-14 text-center ring-2 ring-violet-500 shadow-md">
+              Winner Player : {player === 1 ? "❌" : "⭕"}
+            </p>
+          ) : null}
         </div>
       </div>
 

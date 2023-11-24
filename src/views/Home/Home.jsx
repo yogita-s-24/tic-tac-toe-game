@@ -17,6 +17,22 @@ function Home() {
 
   const [winner, setWinner]=useState(null);
 
+const reset = () =>{
+  setBoard({
+    1 : "",
+    2 : "",
+    3 : "",
+    4 : "",
+    5 : "",
+    6 : "",
+    7 : "",
+    8 : "",
+    9 : ""
+  });
+
+  setWinner(null);
+}
+
 
     const checkWinner = () => {
       const symbol = player === 1 ? "❌" : "⭕";
@@ -100,7 +116,8 @@ function Home() {
         <div className="text-center mt-7">
           <button
             type="button"
-            className="bg-violet-600 text-white px-14 py-2 rounded-sm shadow-3xl">
+            className="bg-violet-600 text-white px-14 py-2 rounded-sm shadow-3xl"
+            onClick={()=>{reset()}}>
             Reset
           </button>
         </div>

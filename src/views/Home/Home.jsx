@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import showTost from "crunchy-toast";
+import Confetti from "react-confetti";
 
 function Home() {
+  
+  const [confettiVisible, setConfettiVisible] = useState(false); 
+
   const [player, setPlayer] = useState(1);
 
   const [board, setBoard] = useState({
@@ -32,6 +36,7 @@ function Home() {
     });
 
     setWinner(null);
+    setConfettiVisible(false);
   };
 
   const checkWinner = () => {
@@ -39,56 +44,64 @@ function Home() {
 
     if (board[1] === symbol && board[2] === symbol && board[3] === symbol) {
       return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
-      setWinner(player);
+      setWinner(player),
+      setConfettiVisible(true);
     } else if (
       board[4] === symbol &&
       board[5] === symbol &&
       board[6] === symbol
     ) {
       return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
-      setWinner(player);
+      setWinner(player),
+      setConfettiVisible(true);
     } else if (
       board[7] === symbol &&
       board[8] === symbol &&
       board[9] === symbol
     ) {
       return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
-      setWinner(player);
+      setWinner(player),
+      setConfettiVisible(true);
     } else if (
       board[1] === symbol &&
       board[4] === symbol &&
       board[7] === symbol
     ) {
       return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
-      setWinner(player);
+      setWinner(player),
+      setConfettiVisible(true);
     } else if (
       board[2] === symbol &&
       board[5] === symbol &&
       board[8] === symbol
     ) {
       return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
-      setWinner(player);
+      setWinner(player),
+      setConfettiVisible(true);
     } else if (
       board[3] === symbol &&
       board[6] === symbol &&
       board[9] === symbol
     ) {
       return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
-      setWinner(player);
+      setWinner(player),
+      setConfettiVisible(true);
     } else if (
       board[1] === symbol &&
       board[5] === symbol &&
       board[9] === symbol
     ) {
       return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
-      setWinner(player);
+      setWinner(player),
+      setConfettiVisible(true);
     } else if (
       board[3] === symbol &&
       board[5] === symbol &&
       board[7] === symbol
     ) {
       return showTost(`${player} is Winner 🥇🏆`, "success", 6000),
-      setWinner(player);
+      setWinner(player),
+      setConfettiVisible(true);
     }
 
     setPlayer(player === 1 ? 2 : 1);
@@ -112,6 +125,7 @@ function Home() {
 
   return (
     <div className="flex justify-around flex-wrap items-center">
+     
       <div>
         <h1 className="text-4xl font-bold font-sans md:font-serif  px-20 py-3 rounded-sm bg-violet-500 text-white shadow-3xl cursor-no-drop">
           Tic Tac Toe
@@ -226,6 +240,19 @@ function Home() {
             Reset
           </button>
         </div>
+        {winner !== null && confettiVisible && (
+          <Confetti
+            width={window.innerWidth}
+            height={window.innerHeight}
+            confettiSource={{
+              x: window.innerWidth / 7,
+              y: 2,
+              w: window.innerWidth,
+              h: 0,
+            }}
+            // other properties...
+          />
+        )}
       </div>
     </div>
   );
